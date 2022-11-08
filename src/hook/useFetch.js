@@ -18,7 +18,7 @@ function useFetch(url) {
     )()
   }, [url]);
 
-  return [data];
+  return [data,setData];
 }
 
 export default useFetch;

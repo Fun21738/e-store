@@ -4,6 +4,7 @@ import React from 'react'
 import {useNavigate} from 'react-router-dom'
 import { useContext } from "react"
 import { CategoryContext } from "../App"
+import Addproducts from "../components/Addproducts/Addproducts"
 
 function Layout() {
 
@@ -21,13 +22,17 @@ function Layout() {
 
             <div className="nav-links">
                 <ul>
-                    <li onClick={()=> {navigate("/allproducts"); setCategory("")}}>ALL Products</li>
+                    <li onClick={()=> {navigate("/"); setCategory("")}}>ALL Products</li>
                     <li onClick={()=> {navigate("/allproducts"); setCategory("electronics")}}>electronics</li>
                     <li onClick={()=> {navigate("/allproducts"); setCategory("jewelery")}}>jewelery</li>
                     <li onClick={()=> {navigate("/allproducts"); setCategory("men's clothing")}}>men's clothing</li>
                     <li onClick={()=> {navigate("/allproducts"); setCategory("women's clothing")}}>women's clothing</li>
+                     
+
                 </ul>
+                
             </div>
+            <Addproducts />
         </div>
     
     </>
