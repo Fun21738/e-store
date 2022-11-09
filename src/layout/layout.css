@@ -25,6 +25,7 @@
 }
 
 .nav-links ul li:hover{
-    color: rgb(255, 0, 157);
+    color: orange;
+    text-decoration: underline;
 
 }

@@ -64,7 +64,7 @@
     flex-direction: column;
     width: 40%;
     height: 100%;
-    border: solid 1px red;
+    /* border: solid 1px red; */
     text-align: left;
     align-items: center;
     margin-left: 30%;
@@ -75,9 +75,12 @@
     color: red;
 }
 
-.about{
+
+.sort{
+    max-width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
     border: none;
-    /* background-color: burlywood; */
-    /* padding: 4px; */
-    border-bottom: 1px solid red;
+    box-shadow: 0  3px rgb(221, 221, 221);
 }

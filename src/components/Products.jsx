@@ -3,10 +3,13 @@ import "./productcard.css";
 import { useContext, useState } from "react";
 import { CategoryContext } from "../App";
 import React from "react";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+// import { newProduct } from "./Addproducts/Addproducts";
 
-function Products({ newProductArray }) {
-  const [data, setData] = useFetch("https://fakestoreapi.com/products");
+function Products({ data, setData }) {
+  console.log(data);
+  // const [data, setData] = useFetch("https://fakestoreapi.com/products");
   const [de] = useFetch(`https://fakestoreapi.com/products?sort=desc`);
   const [as] = useFetch(`https://fakestoreapi.com/products?sort=asc`);
   const [category] = useContext(CategoryContext);
@@ -28,6 +31,8 @@ function Products({ newProductArray }) {
     }
   };
 
+  const navigate = useNavigate()
+
   const filterdata = () => {
     if (!category) return data;
     return data?.filter((item) => item.category === category);
@@ -37,15 +42,19 @@ function Products({ newProductArray }) {
 
   return (
     <>
-      <select value={Ascendng} onChange={handleChange}>
+    <div className="sort">
+      <label htmlFor="sort">sort by:</label>
+      <select className='sort-order' value={Ascendng} onChange={handleChange}>
         <option value="asc">ascending</option>
         <option value="desc">descending</option>
       </select>
+    </div>
+      
 
       <div className="product-container">
         {DataFiltered?.map((d) => (
           <div className="product-card" key={d.id}>
-            <div className="image">
+            <div className="image" onClick={()=> navigate(`/productdetails/${d.id}`)}>
               <img
                 src={d?.image}
                 alt="image_p"
@@ -66,9 +75,6 @@ function Products({ newProductArray }) {
               <p className="price">Price: {d?.price}</p>
               <p className="rate">Rate: {d?.rating.rate}</p>
             </div>
-            <NavLink to={`products/${d.id}`}>
-              <button className="about"> About</button>
-            </NavLink>
           </div>
         ))}
       </div>
